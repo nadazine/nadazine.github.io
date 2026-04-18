@@ -1,12 +1,32 @@
 ---
 layout: archive
-title: "Teaching"
+title: "Teaching & Mentoring"
 permalink: /teaching/
 author_profile: true
 ---
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+{% assign all_teaching = site.teaching | sort: 'date' | reverse %}
+
+{% if all_teaching.size > 0 %}
+
+  <h2>Teaching</h2><hr />
+  {% for post in all_teaching %}
+    {% if post.type != "Supervision" %}
+      {% include archive-single.html %}
+    {% endif %}
+  {% endfor %}
+
+  <br><br>
+
+  <h2>Mentoring</h2><hr />
+  {% for post in all_teaching %}
+    {% if post.type == "Supervision" %}
+      {% include archive-single.html %}
+    {% endif %}
+  {% endfor %}
+
+{% else %}
+  <p><em>No teaching activities found.</em></p>
+{% endif %}

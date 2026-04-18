@@ -1,0 +1,14 @@
+---
+layout: archive
+title: "Activities"
+permalink: /activities/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% assign activities_sorted = site.activities | sort: 'date' | reverse %}
+
+{% for post in activities_sorted %}
+  {% include archive-single.html %}
+{% endfor %}
